@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Canvas x:Name="canvas" Margin="0,0,94.658,0">
+        </Canvas>
+        <Button x:Name="button" Content="Button" Height="32.137" Canvas.Left="434.977" Canvas.Top="278.263" Width="73.623" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" d:LayoutOverrides="Width, Height"/>
     </Grid>
 </Window>

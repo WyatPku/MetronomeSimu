@@ -24,7 +24,7 @@ namespace metronomeSimu.SingleCore
         public static double partialE(double theta)
         { 
             //这个曲面是二次曲线，零点在theta0处
-            return 0.1 * (theta - theta1);
+            return 0.01 * (theta - theta1);
         }
         //这个是偏导数正负的函数
         public static int getD(int state, double theta)

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using metronomeSimu.SingleCore;
+using System.Timers;
 
 namespace metronomeSimu
 {
@@ -22,22 +23,41 @@ namespace metronomeSimu
     public partial class MainWindow : Window
     {
         MetronomeCore metronome;
-        double deltaT = 0.001;
-        double MaxT = 100;
-        double MaxTheta = 0.11;
+        /*double deltaT = 0.001;
+        double MaxT = 10;
+        double MaxTheta = 0.11;*/
+        MetrCore metrCore;
 
         public MainWindow()
         {
             InitializeComponent();
             metronome = new MetronomeCore(0);
-            button.Click += Button_Click;
+            buttonStart.Click += Button_Click;
+            buttonEnd.Click += ButtonEnd_Click;
+            metrCore = new MetrCore(progressBar, textBlockprogress, this.Dispatcher);
+            metrCore.coreList.Add(metronome);
+            //metrCore.coreList.Add(new MetronomeCore(0.1));
+        }
+
+        int i = 0;
+
+        private void ButtonEnd_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //timer.Enabled = true;
+            //staticShow();
+            metrCore.StartComput();
+        }
+
+        /*private void staticShow()
+        {
             //开始计算，并且展示出图像
             List<double> data = new List<double>();
-            for (int i=0; i < MaxT / deltaT; i++)
+            for (int i = 0; i < MaxT / deltaT; i++)
             {
                 //data.Add(Math.Sin(i * deltaT));
                 metronome.afterdeltaT(deltaT);
@@ -50,7 +70,7 @@ namespace metronomeSimu
             double Y0 = canvas.ActualHeight / 2;
             double lastX = 0;
             double lastY = Y0;
-            for (int i=0; i<data.Count; i++)
+            for (int i = 0; i < data.Count; i++)
             {
                 Line line = new Line();
                 line.Stroke = Brushes.Black;
@@ -63,9 +83,9 @@ namespace metronomeSimu
                 line.Y2 = lastY;
                 canvas.Children.Add(line);
             }
-        }
+        }*/
 
-        private void refresh()
+        private void next()
         {
 
         }

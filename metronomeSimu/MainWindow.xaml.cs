@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using metronomeSimu.SingleCore;
 using System.Timers;
+using metronomeSimu.MetroShow;
 
 namespace metronomeSimu
 {
@@ -23,6 +24,7 @@ namespace metronomeSimu
     public partial class MainWindow : Window
     {
         MetronomeCore metronome;
+        ShowManager showManager;
         /*double deltaT = 0.001;
         double MaxT = 10;
         double MaxTheta = 0.11;*/
@@ -32,11 +34,36 @@ namespace metronomeSimu
         {
             InitializeComponent();
             metronome = new MetronomeCore(0.1);
+            showManager = new ShowManager(canvas);
             buttonStart.Click += Button_Click;
             buttonEnd.Click += ButtonEnd_Click;
+            buttonShow.Click += ButtonShow_Click;
+            canvas.MouseDown += Canvas_MouseDown;
+            canvas.MouseMove += Canvas_MouseMove;
+            canvas.MouseUp += Canvas_MouseUp;
             metrCore = new MetrCore(progressBar, textBlockprogress, this.Dispatcher);
             metrCore.coreList.Add(metronome);
             //metrCore.coreList.Add(new MetronomeCore(0.1));
+        }
+
+        private void Canvas_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void Canvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void ButtonShow_Click(object sender, RoutedEventArgs e)
+        {
+            showManager.ReadFile(textBoxOutput.Text);
         }
 
         private void ButtonEnd_Click(object sender, RoutedEventArgs e)
@@ -48,7 +75,7 @@ namespace metronomeSimu
         {
             //timer.Enabled = true;
             //staticShow();
-            metrCore.StartComput("2017021304");
+            metrCore.StartComput(textBoxOutput.Text);
         }
 
         /*private void staticShow()

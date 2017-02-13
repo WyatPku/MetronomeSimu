@@ -10,8 +10,8 @@ namespace metronomeSimu
     public static class FileEncoder
     {
         public static String DefaultPath = "data/";
-        //文件头部由两个int，第一个是有几组数，另一个是每组数的长度
-        public static void EncodeTo(String fileName, List<double[]> data)
+        //文件头部有两个int，第一个是有几组数，另一个是每组数的长度，还有一个double是没一个数据的时间间隔
+        public static void EncodeTo(String fileName, List<double[]> data, double showDeltaT)
         {
             if (!Directory.Exists(DefaultPath))
             {
@@ -20,14 +20,14 @@ namespace metronomeSimu
             FileStream fs = new FileStream(DefaultPath + fileName, FileMode.Create);
             BinaryWriter bw = new BinaryWriter(fs);
             bw.Write(data.Count);
-            //选择最大的长度保存
-            int Length = -1;
+            //选择最小的长度保存
+            int Length = data[0].Length;
             foreach (double[] x in data)
             {
-                if (Length == -1) Length = x.Length;
-                if (x.Length > Length) Length = x.Length;
+                if (x.Length < Length) Length = x.Length;
             }
             bw.Write(Length);
+            bw.Write(showDeltaT);
             foreach (double[] x in data)
             {
                 for (int i=0; i<Length; i++)

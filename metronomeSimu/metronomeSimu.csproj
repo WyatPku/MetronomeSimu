@@ -57,9 +57,11 @@
     <Compile Include="FileDecoder.cs" />
     <Compile Include="MetrCore.cs" />
     <Compile Include="FileEncoder.cs" />
+    <Compile Include="MetroShow\MetroShape.cs" />
     <Compile Include="MetroShow\multiMetroShow.xaml.cs">
       <DependentUpon>multiMetroShow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MetroShow\ShowManager.cs" />
     <Compile Include="SingleCore\MetronomeCore.cs" />
     <Compile Include="SingleCore\SinglePara.cs" />
     <Page Include="MainWindow.xaml">

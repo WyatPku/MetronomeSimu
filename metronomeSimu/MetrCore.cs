@@ -15,7 +15,7 @@ namespace metronomeSimu
     {
         //采用多线程的方法计算，并通过Invoke回调
         public const double deltaT = 0.001; //计算间隔/s
-        public const double lastingT = 10; //计算持续的时间/s
+        public const double lastingT = 13; //计算持续的时间/s
         public const double showDeltaT = 0.01; //保存间隔/s
         Thread thread = null;
         ProgressBar progressbar = null;
@@ -95,7 +95,7 @@ namespace metronomeSimu
                 if (i % deltaN == 0) InvokeAndShow(i / deltaN);
             }
             //data.Add(new double[] { 1, 2, 3, 4 });
-            FileEncoder.EncodeTo(fileName + ".dat", data);
+            FileEncoder.EncodeTo(fileName + ".dat", data, showDeltaT);
             InvokeAndShow(100);
             ThreadEnd();
         }

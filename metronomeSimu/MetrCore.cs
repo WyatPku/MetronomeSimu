@@ -15,14 +15,14 @@ namespace metronomeSimu
     {
         //采用多线程的方法计算，并通过Invoke回调
         public const double deltaT = 0.001; //计算间隔/s
-        public const double lastingT = 1; //计算持续的时间/s
-        public const double showDeltaT = 0.001; //保存间隔/s
+        public const double lastingT = 10; //计算持续的时间/s
+        public const double showDeltaT = 0.01; //保存间隔/s
         Thread thread = null;
         ProgressBar progressbar = null;
         TextBlock textBlock = null;
         Dispatcher dispatcher = null;
         public List<MetronomeCore> coreList = new List<MetronomeCore>();
-        String fileName = "default";
+        public static String fileName = "default";
         public MetrCore(ProgressBar progressbar_ = null,
             TextBlock textBlock_ = null, Dispatcher dispatcher_ = null)
         {

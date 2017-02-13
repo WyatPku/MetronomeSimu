@@ -31,15 +31,13 @@ namespace metronomeSimu
         public MainWindow()
         {
             InitializeComponent();
-            metronome = new MetronomeCore(0);
+            metronome = new MetronomeCore(0.1);
             buttonStart.Click += Button_Click;
             buttonEnd.Click += ButtonEnd_Click;
             metrCore = new MetrCore(progressBar, textBlockprogress, this.Dispatcher);
             metrCore.coreList.Add(metronome);
             //metrCore.coreList.Add(new MetronomeCore(0.1));
         }
-
-        int i = 0;
 
         private void ButtonEnd_Click(object sender, RoutedEventArgs e)
         {
@@ -50,7 +48,7 @@ namespace metronomeSimu
         {
             //timer.Enabled = true;
             //staticShow();
-            metrCore.StartComput();
+            metrCore.StartComput("2017021304");
         }
 
         /*private void staticShow()

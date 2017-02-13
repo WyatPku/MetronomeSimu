@@ -10,6 +10,7 @@ namespace metronomeSimu.SingleCore
     public class MetronomeCore
     {
         public int state; // 1在右边，-1在左边
+        public double v = 120;
         double theta;
         double thetadot;
         public double A;
@@ -35,9 +36,9 @@ namespace metronomeSimu.SingleCore
                 thetaABS = Math.Abs(SinglePara.theta0 + state * theta);
             }
             A = (- SinglePara.partialE(thetaABS)*SinglePara.getD(state, theta)
-                - SinglePara.m * SinglePara.g * SinglePara.lG * Math.Sin(theta)) 
-                / SinglePara.I;
-            B = SinglePara.m * SinglePara.lG * Math.Cos(theta) / SinglePara.I;
+                - SinglePara.m * SinglePara.g * SinglePara.getlG(v) * Math.Sin(theta)) 
+                / SinglePara.getI(v);
+            B = SinglePara.m * SinglePara.getlG(v) * Math.Cos(theta) / SinglePara.getI(v);
             double thetadotdot = A - B * 0;
             thetadot += thetadotdot * deltaT;
             theta += thetadot * deltaT;

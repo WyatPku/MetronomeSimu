@@ -23,8 +23,8 @@ namespace metronomeSimu
         Dispatcher dispatcher = null;
         public List<MetronomeCore> coreList = new List<MetronomeCore>();
         public static String fileName = "default";
-        public MetrCore(ProgressBar progressbar_ = null,
-            TextBlock textBlock_ = null, Dispatcher dispatcher_ = null)
+        public MetrCore(ProgressBar progressbar_,
+            TextBlock textBlock_, Dispatcher dispatcher_)
         {
             progressbar = progressbar_;
             textBlock = textBlock_;

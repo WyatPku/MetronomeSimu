@@ -23,7 +23,6 @@ namespace metronomeSimu
     /// </summary>
     public partial class MainWindow : Window
     {
-        MetronomeCore metronome;
         ShowManager showManager;
         /*double deltaT = 0.001;
         double MaxT = 10;
@@ -33,8 +32,7 @@ namespace metronomeSimu
         public MainWindow()
         {
             InitializeComponent();
-            metronome = new MetronomeCore(0.1);
-            showManager = new ShowManager(canvas);
+            showManager = new ShowManager(canvas, this.Dispatcher);
             buttonStart.Click += Button_Click;
             buttonEnd.Click += ButtonEnd_Click;
             buttonShow.Click += ButtonShow_Click;
@@ -42,8 +40,10 @@ namespace metronomeSimu
             canvas.MouseMove += Canvas_MouseMove;
             canvas.MouseUp += Canvas_MouseUp;
             metrCore = new MetrCore(progressBar, textBlockprogress, this.Dispatcher);
-            metrCore.coreList.Add(metronome);
-            //metrCore.coreList.Add(new MetronomeCore(0.1));
+            for (int i=0; i<15; i++)
+            {
+                metrCore.coreList.Add(new MetronomeCore(i / 10.0));
+            }
         }
 
         private void Canvas_MouseUp(object sender, MouseButtonEventArgs e)
@@ -64,11 +64,12 @@ namespace metronomeSimu
         private void ButtonShow_Click(object sender, RoutedEventArgs e)
         {
             showManager.ReadFile(textBoxOutput.Text);
+            showManager.ShowMetro();
         }
 
         private void ButtonEnd_Click(object sender, RoutedEventArgs e)
         {
-            
+            showManager.EndShow();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

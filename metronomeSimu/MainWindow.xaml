@@ -13,7 +13,8 @@
         <ProgressBar x:Name="progressBar" Height="18.047" Margin="10,0,151.004,10" VerticalAlignment="Bottom"/>
         <TextBlock x:Name="textBlockprogress" HorizontalAlignment="Right" Height="18.047" Margin="0,0,94.658,10" TextWrapping="Wrap" Text="100%" VerticalAlignment="Bottom" Width="51.346"/>
         <Button x:Name="buttonShow" Content="演示" Height="32.137" Width="73.623" HorizontalAlignment="Right" Margin="0,0,10,84.274" VerticalAlignment="Bottom" d:LayoutOverrides="Width, Height"/>
-        <TextBox x:Name="textBoxOutput" HorizontalAlignment="Right" Height="18.8" Margin="0,37.367,10,0" TextWrapping="Wrap" Text="default" VerticalAlignment="Top" Width="73.623"/>
+        <TextBox x:Name="textBoxOutput" HorizontalAlignment="Right" Height="18.8" Margin="0,37.367,10,0" TextWrapping="Wrap" Text="test" VerticalAlignment="Top" Width="73.623"/>
         <Label x:Name="label" Content="输出文件名" HorizontalAlignment="Right" Height="27.367" Margin="0,10,10,0" VerticalAlignment="Top" Width="73.623"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Right" Height="0" Margin="0,37.367,10,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="164.2"/>
     </Grid>
 </Window>
